@@ -18,6 +18,4 @@ public class Restaurant {
     private String discountHeader;
     private String discountSubHeader;
     private boolean pureVeg;
-
-
 }
