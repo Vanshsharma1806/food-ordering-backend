@@ -36,7 +36,7 @@ public class CartController {
     public ResponseEntity<?> addItem(@RequestBody CartItem item){
         String userId = getUserId();
         Cart cart = cartService.addItemToCart(userId, item);
-        return new ResponseEntity<>(cart, HttpStatus.CREATED);
+        return new ResponseEntity<>(cart, HttpStatus.OK);
     }
 
     @DeleteMapping("/remove-item/{itemId}")

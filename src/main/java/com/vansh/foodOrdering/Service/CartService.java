@@ -39,6 +39,7 @@ public class CartService {
             }
         }
         if(!found){
+            newCarItem.setQuantity(1);
             itemList.add(newCarItem);
         }
         cart.setItemList(itemList);
