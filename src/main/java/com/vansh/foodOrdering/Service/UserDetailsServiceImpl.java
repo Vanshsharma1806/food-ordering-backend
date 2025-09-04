@@ -33,7 +33,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             authorities.add(new SimpleGrantedAuthority(role));
         }
         return new User(
-                user.getUsername(),
+                user.getId(),
                 user.getPassword(),
                 authorities
         );

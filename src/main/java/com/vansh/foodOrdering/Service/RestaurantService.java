@@ -20,9 +20,7 @@ import java.util.List;
 public class RestaurantService {
     private final RestTemplate restTemplate = new RestTemplate();
     private final ObjectMapper objectMapper = new ObjectMapper();
-    private final String SWIGGY_URL =
-            "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.9711023&lng=77.6544715&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
-
+    private final String SWIGGY_URL = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6373489&lng=77.4056957&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
     public List<Restaurant> fetchRestaurants(){
         List<Restaurant> restaurants = new ArrayList<>();
         try{
