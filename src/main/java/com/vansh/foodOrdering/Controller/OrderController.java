@@ -49,4 +49,18 @@ public class OrderController {
         return new ResponseEntity<>(order, HttpStatus.OK);
     }
 
+    @GetMapping("/latest")
+    public ResponseEntity<Order> getLatestOrder() {
+        // use your helper to get the logged-in user id/username
+        String userId = getUserId();
+
+        Order latestOrder = orderService.getLatestOrderForUser(userId);
+
+        if (latestOrder == null) {
+            return ResponseEntity.noContent().build();
+        }
+
+        return ResponseEntity.ok(latestOrder);
+    }
+
 }

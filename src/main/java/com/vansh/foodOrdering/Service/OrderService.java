@@ -44,4 +44,8 @@ public class OrderService {
         return orderRepository.findById(id).orElse(null);
     }
 
+    public Order getLatestOrderForUser(String userId) {
+        return orderRepository.findTopByUserIdOrderByCreatedAtDesc(userId);
+    }
+
 }
