@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface OrderRepository extends MongoRepository<Order, String> {
     List<Order> findByUserId(String userId);
-    Optional<Order> findById(String id);
+    Optional<Order> findByIdAndUserId(String id, String userId);
     List<Order> findAll();
     Order findTopByUserIdOrderByCreatedAtDesc(String userId);
 

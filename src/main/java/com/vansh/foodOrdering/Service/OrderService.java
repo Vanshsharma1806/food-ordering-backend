@@ -40,8 +40,8 @@ public class OrderService {
         return orderRepository.findByUserId(userId);
     }
 
-    public Order getOrderById(String id){
-        return orderRepository.findById(id).orElse(null);
+    public Order getOrderByIdAndUserId(String id, String userId){
+        return orderRepository.findByIdAndUserId(id, userId).orElse(null);
     }
 
     public Order getLatestOrderForUser(String userId) {

@@ -37,7 +37,7 @@ public class OrderController {
         return new ResponseEntity<>(order, HttpStatus.OK);
     }
     @GetMapping("/my-orders")
-    public ResponseEntity<List<Order>> getAllOrders(){
+    public ResponseEntity<List<Order>> getAllOrdersBYUserId(){
 
         List<Order> orders = orderService.getOrdersByUserId(getUserId());
         return new ResponseEntity<>(orders, HttpStatus.OK);
@@ -45,8 +45,11 @@ public class OrderController {
 
     @GetMapping("/{orderId}")
     public ResponseEntity<Order> getOrderById(@PathVariable String orderId){
-        Order order = orderService.getOrderById(orderId);
-        return new ResponseEntity<>(order, HttpStatus.OK);
+        Order order = orderService.getOrderByIdAndUserId(orderId, getUserId());
+        if (order == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        return ResponseEntity.ok(order);
     }
 
     @GetMapping("/latest")
