@@ -16,14 +16,11 @@ RUN mvn dependency:go-offline -B
 # Copy source code
 COPY src ./src
 
-# Build the jar
+# Build the jar inside container
 RUN mvn clean package -DskipTests
-
-# Copy the built jar to app.jar
-COPY target/*.jar app.jar
 
 # Expose port 8080
 EXPOSE 8080
 
-# Run the jar
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# Run the jar directly from target folder
+ENTRYPOINT ["java", "-jar", "target/$(ls target | grep .jar | head -n 1)"]
