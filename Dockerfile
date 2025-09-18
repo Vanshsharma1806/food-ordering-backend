@@ -16,11 +16,14 @@ RUN mvn dependency:go-offline -B
 # Copy source code
 COPY src ./src
 
-# Build the jar inside container
+# Build the jar (skip tests for faster build)
 RUN mvn clean package -DskipTests
+
+# Copy the Spring Boot executable jar to app.jar
+COPY target/*.jar app.jar
 
 # Expose port 8080
 EXPOSE 8080
 
-# Run the jar directly from target folder
-ENTRYPOINT ["java", "-jar", "target/$(ls target | grep .jar | head -n 1)"]
+# Run the jar
+ENTRYPOINT ["java", "-jar", "app.jar"]
